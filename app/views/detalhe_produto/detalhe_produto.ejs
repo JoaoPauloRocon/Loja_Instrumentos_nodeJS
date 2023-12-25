@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/produtos/produto.css">
+    <title>Detalhes do Produto</title>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <%- include("../partes/navbar", { codLogado: codLogado }) %>
+
+    <div class="container">
+        <% for (var i=0; i < JProdutos.length; i++) { %>
+            <div class="card">
+                <form action="/carrinho_produtos" method="post">
+
+                    <%if(JProdutos[i].img == null){%>
+                        <img src="https://via.placeholder.com/300x200" alt="Product 1">
+                        <%}else{%>
+                            <img src="/uploads/<%=JProdutos[0].img%>" class="img-responsive img-rounded center-block" alt="imagem produto">
+                        <%}%>
+
+                    
+                    <div class="card-content">
+                        <h2 class="product-title">
+                            <a href='./detalhe_produto?id_produto=<%=JProdutos[i].IDProduto%>'>
+                                <%=JProdutos[0].nomeProduto%>
+                            </a>
+                        </h2>
+                        <p class="product-description">
+                            Marca : <%= JProdutos[0].marca %>
+                        </p>
+                        <p class="product-description">
+                            Tipo do Instrumento : <%= JProdutos[0].tipoInstrumento %>
+                        </p>
+                        <p class="product-description">
+                            Quantidade em Estoque : <%= JProdutos[0].quantidadeEstoque %>
+                        </p>
+                        <p class="product-price">
+                            R$: 
+                            <%= JProdutos[0].preco %>
+                                <input type="hidden" name="IDProduto" value="<%=JProdutos[0].IDProduto%>">
+                                <input type="hidden" name="IDCliente" value="<%=codLogado%>">
+                        </p>
+
+                        <%-include("../partes/button_carrinho", {JProduto: JProdutos[i], i: i })%>
+                    </div>
+                </form>
+
+            </div>
+            <% } %>
+    </div>
+
+    <footer>
+        <div class="container-footer">
+            <div class="row-footer">
+
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="home.html"> Quem somos </a></li>
+                        <li><a href="home.html"> nossos serviços </a></li>
+                        <li><a href=""> política de privacidade </a></li>
+                        <li><a href=""> programa de afiliados</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Obter ajuda</h4>
+                    <ul>
+                        <li><a href="contato.html">FAQ</a></li>
+                        <li><a href="contato.html">Transporte</a></li>
+                        <li><a href="contato.html">devoluções</a></li>
+                        <li><a href="#">Status De Pedido</a></li>
+                        <li><a href="#">Opções De Pagamento</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Loja online</h4>
+                    <ul>
+                        <li><a href="Produtos.html">Violões</a></li>
+                        <li><a href="Produtos.html">Violas</a></li>
+                        <li><a href="Produtos.html">Teclados</a></li>
+                        <li><a href="Acessorios.html">Acessórios</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Se Inscreva!</h4>
+                    <div class="form-sub">
+                        <form>
+                            <input type="email" placeholder="Digite o seu e-mail" required>
+                            <button>Inscrever</button>
+                        </form>
+                    </div>
+
+                    <div class="midias-socias">
+                        <a href="https://www.facebook.com/"> <i class="fa-brands fa-facebook-f"></i> </a>
+                        <a href="https://www.instagram.com/"> <i class="fa-brands fa-instagram"></i> </a>
+                        <a href="https://web.whatsapp.com/"> <i class="fa-brands fa-whatsapp"></i> </a>
+                        <a
+                            href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoicHQifQ%3D%3D%22%7D">
+                            <i class="fa-brands fa-twitter"></i> </a><br><br>
+                        <p class="copyright">&copy; 2022 Copyright Guitar House</p>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Conteúdo dos detalhes do produto -->
+    <div class="container">
+        <div class="produto-detalhe">
+            <h1></h1>
+            <p><%=JProdutos[0].tipoInstruento%></p>
+            <p><%=JProdutos[0].marca%></p>
+            <p><%=JProdutos[0].preco%></p>
+            <p><%=JProdutos[0].quantidadeEstoque%></p>
+            <!-- Adicione outros detalhes do produto aqui -->
+        </div>
+    </div>
+</body>
+</html>

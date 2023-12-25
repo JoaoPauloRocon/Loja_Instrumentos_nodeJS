@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../carrinho/style.css" />
+  <title>Carrinho de Compras</title>
+</head>
+
+<body>
+  <header>
+    <%- include("../partes/navbar", { codLogado: codLogado }) %>
+
+  </header>
+  <main>
+    <div class="page-title">Historico de Pedidos:</div>
+    <div class="content">
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Valor Total</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var i=0; i < JHistorico.length; i++) { %>
+              <tr>
+                <td>
+                  <div class="product">
+                    <div class="info">
+                      <div class="category">
+                        <a href="/detalhe_pedido?codPedido=<%=JHistorico[i].IDPedido%>&codLogado=<%=codLogado%>">Pedido #<%=JHistorico[i].IDPedido%></a>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>R$<%=JHistorico[i].valor_total%>
+                </td>
+                <td><%= JHistorico[i].data_pedido%>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>

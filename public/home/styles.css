@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .header {
+
+    color: #d39b6a;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.logo {
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 30px; 
+}
+
+.navigation {
+    list-style: none;
+    padding: 0;
+    margin-right: 30px; 
+}
+
+.navigation li {
+    display: inline;
+    margin-left: 20px; 
+}
+
+.navigation a {
+    color: #d39b6a;
+    text-decoration: none;
+    font-weight: bold;
+    padding-right: 17px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    color: red;
+}
+  
+  .sections {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: hidden;
+  }
+
+  #section1{
+    background-image: url(Violao-Headstock-Custom-12-Cordas-RX440.jpg);
+  }
+
+  #section2{
+    background-image: url(Pre-Venda-BT-na-Made-in-Brazil-1-2.png);
+  }
+
+  #section3{
+    background-image: url(Banner-Site-Rozini-Orgulho-de-Ser-Brasileiro.jpg);
+  }
+
+  .section:nth-child(odd) {
+    background-color: #a29797;
+  }
+  
+  .section:nth-child(even) {
+    background-color: #e0e0e0;
+  }
+  
+  .scroll-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%);
+  }
+
+  .cylinder {
+    position: relative;
+    padding: 3px;
+    width: 20px;
+    height: 40px;
+    background-color: transparent; /* Fundo transparente */
+    border: 5px solid #ffffff; /* Borda preta */
+    border-radius: 100px;
+    overflow: hidden; /* Evita que a bola ultrapasse o cilindro */
+  }
+  
+  .ball {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: bounce 1s infinite alternate;
+  }
+  
+
+.section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.text-slide {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.active .text-slide {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  @keyframes bounce {
+    0% {
+      transform: translate(-50%, -50%) translateY(-5px);
+    }
+    100% {
+      transform: translate(-50%, -50%) translateY(-25px);
+    }
+  }
+  

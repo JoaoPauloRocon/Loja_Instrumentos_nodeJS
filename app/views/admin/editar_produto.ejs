@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/add_Produto/add_Produto.css">
+    <title>Formulário para inserir Novos Produtos</title>
+</head>
+<body>
+    <%- include("../partes/navbar", { codLogado: codLogado }) %>
+
+
+    <form action="/produtos/salvar_edicao_produto" method="post" enctype="multipart/form-data", >
+
+        <label>Nome do Instrumento</label>
+        <input type="text" id="nomeProduto" name="nomeProduto" value="<%=JProdutos[0].nomeProduto%>" placeholder="Nome do Instrumento">
+
+        <br><br>
+
+        <label>Tipo do Instrumento</label>
+        <input type="text" id="tipoInstrumento" name="tipoInstrumento" value="<%=JProdutos[0].tipoInstrumento%>" placeholder="Tipo do Instrumento">
+
+        <br><br>
+
+        <label>Marca</label>
+        <input type="text" id="marca" name="marca" value="<%=JProdutos[0].marca%>" placeholder="Marca do Instrumento">
+
+        <br><br>
+
+        <label>Preço</label>
+        <input type="text" id="preco" name="preco" value="<%=JProdutos[0].preco%>" placeholder="Preço do Instrumento">
+
+        <br><br>
+
+        <label>Quantidade em Estoque</label>
+        <input type="text" id="quantidadeEstoque" name="quantidadeEstoque" value="<%=JProdutos[0].quantidadeEstoque%> "placeholder="Quantidade em Estoque">
+
+        <br><br>
+
+        <label>Imagem do Produto</label>
+        <input type="file" class="btn btn-default" id="file" name="file" placeholder="file" accept="image/*">
+
+        <br><br>
+
+        <input type="hidden" name="id" value="<%=JProdutos[0].IDProduto%>">
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

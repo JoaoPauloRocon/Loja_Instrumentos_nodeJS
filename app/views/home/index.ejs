@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/produtos/produto.css">
+  <!-- Inclua o link para Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>Listagem de Produtos</title>
+</head>
+
+<body>
+
+  <%- include("../partes/navbar", { codLogado: codLogado }) %>
+
+    <div class="container">
+      <% for (var i=0; i < 4; i++) { %>
+        <div class="card">
+          <form action="/carrinho_produtos" method="post">
+
+            <%if(JProdutos[i].img==null){%>
+              <img src="https://via.placeholder.com/300x200" alt="Product 1">
+              <%}else{%>
+                <img src="/uploads/<%=JProdutos[i].img%>" class="img-responsive img-rounded center-block"
+                  alt="imagem produto">
+                <%}%>
+
+
+                  <div class="card-content">
+                    <h2 class="product-title">
+                      <a href='/produtos/detalhe_produto?id_produto=<%=JProdutos[i].IDProduto%>'>
+                        <%= JProdutos[i].NomeProduto %>
+                      </a>
+                    </h2>
+                    <p class="product-description">
+                      Marca: <%= JProdutos[i].Marca %>
+                    </p>
+                    <p class="product-price">
+                      R$ <%= JProdutos[i].Preco %>
+                        <input type="hidden" name="IDProduto" value="<%=JProdutos[i].IDProduto%>">
+                        <input type="hidden" name="IDCliente" value="<%=codLogado%>">
+                    </p>
+                  </div>
+
+          </form>
+
+        </div>
+        <% } %>
+    </div>
+
+    <footer>
+      <div class="container-footer">
+        <div class="row-footer">
+
+          <div class="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+              <li><a href="home.html"> Quem somos </a></li>
+              <li><a href="home.html"> nossos serviços </a></li>
+              <li><a href=""> política de privacidade </a></li>
+              <li><a href=""> programa de afiliados</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Obter ajuda</h4>
+            <ul>
+              <li><a href="contato.html">FAQ</a></li>
+              <li><a href="contato.html">Transporte</a></li>
+              <li><a href="contato.html">devoluções</a></li>
+              <li><a href="#">Status De Pedido</a></li>
+              <li><a href="#">Opções De Pagamento</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Loja online</h4>
+            <ul>
+              <li><a href="Produtos.html">Violões</a></li>
+              <li><a href="Produtos.html">Violas</a></li>
+              <li><a href="Produtos.html">Teclados</a></li>
+              <li><a href="Acessorios.html">Acessórios</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Se Inscreva!</h4>
+            <div class="form-sub">
+              <form>
+                <input type="email" placeholder="Digite o seu e-mail" required>
+                <button>Inscrever</button>
+              </form>
+            </div>
+
+            <div class="midias-socias">
+              <a href="https://www.facebook.com/"> <i class="fa-brands fa-facebook-f"></i> </a>
+              <a href="https://www.instagram.com/"> <i class="fa-brands fa-instagram"></i> </a>
+              <a href="https://web.whatsapp.com/"> <i class="fa-brands fa-whatsapp"></i> </a>
+              <a
+                href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoicHQifQ%3D%3D%22%7D">
+                <i class="fa-brands fa-twitter"></i> </a><br><br>
+              <p class="copyright">&copy; 2022 Copyright Guitar House</p>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+</body>
+
+</html>

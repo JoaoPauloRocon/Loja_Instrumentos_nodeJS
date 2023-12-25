@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+.header {
+
+    color: #d39b6a;
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.logo {
+    font-size: 19px;
+    font-weight: bold;
+    margin-left: 30px; 
+}
+
+.navigation {
+    list-style: none;
+    padding: 0;
+    margin-right: 30px; 
+}
+
+.navigation li {
+    display: inline;
+    margin-left: 20px; 
+}
+
+.navigation a {
+    color: #d39b6a;
+    text-decoration: none;
+    font-weight: bold;
+    padding-right: 17px;
+}
+
+.navigation a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+}
+
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    color: red;
+}
+
+/* Estilos para o formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* Define a altura da tela inteira */
+}
+
+/* Estilos para os elementos do formulário */
+label {
+    text-align: right; /* Alinhar os rótulos no início dos campos de entrada */
+}
+
+input[type="text"] {
+    width: 30%; /* Os campos de entrada agora ocuparão 100% da largura do contêiner */
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #d39b6a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #d39b6a;
+}
+
+

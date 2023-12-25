@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../carrinho/style.css" />
+  <title>Carrinho de Compras</title>
+</head>
+
+<body>
+  <header>
+    <%- include("../partes/navbar", { codLogado: codLogado }) %>
+
+  </header>
+  <main>
+    <div class="page-title">Seu Carrinho</div>
+    <div class="content">
+      <section>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Total</th>
+              <th>-</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (var i=0; i < JCarrinho.length; i++) { %>
+              <tr>
+                <td>
+                  <div class="product">
+                    <div class="info">
+                      <div class="name">
+                        <%= JCarrinho[i].NomeProduto%>
+                      </div>
+                      <div class="category">
+                        <%= JCarrinho[i].tipoInstrumento%>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>R$<%= JCarrinho[i].Preco%>
+                </td>
+                <td>
+
+                  <div class="qty">
+                    <form action="/editar_quantidade_carrinho" method="post">
+                      <div class="quantidade-container">
+                        <input type="hidden" name="IDCliente" value="<%=JCarrinho[i].IDCliente%>">
+                        <input type="hidden" name="IDProduto" value="<%=JCarrinho[i].IDProduto%>">
+                        <input type="hidden" name="QuantidadeEstoque" value="<%=JCarrinho[i].QuantidadeEstoque%>">
+                        <input type="number" name="quantidade" value="<%= JCarrinho[i].quantidade%>" min="1"
+                          max="<%=JCarrinho[i].QuantidadeEstoque%>">
+                        <button type="submit">Salvar</button>
+                      </div>
+                    </form>
+
+                  </div>
+                </td>
+                <td>R$ <%= JCarrinho[i].subtotal%>
+                </td>
+                <td>
+                  <form action="/deletar_produto_carrinho" method="post">
+                    <input type="hidden" name="IDCliente" value="<%=JCarrinho[i].IDCliente%>">
+                    <input type="hidden" name="IDProduto" value="<%=JCarrinho[i].IDProduto%>">
+                    <button type="submit" class="remove"><i class="bx bx-x">-</i></button>
+                  </form>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+      </section>
+      <aside>
+        <div class="box">
+          <form action="/pedido" method="post" onsubmit="inserirDataHora()">
+            <header>Resumo da compra</header>
+            <div class="info">
+              <div><span>Sub-total</span><span>
+                  <%= total%>
+                </span></div>
+              <div><span>Frete</span><span>Gratuito</span></div>
+              <div>
+                <button>
+                  Adicionar cupom de desconto
+                  <i class="bx bx-right-arrow-alt"></i>
+                </button>
+              </div>
+            </div>
+            <footer>
+
+              <span>Total</span>
+              <span>
+
+                <% for (var i=0; i < JCarrinho.length; i++) { %>
+                  <input type="hidden" name="IDProduto" value="<%=JCarrinho[i].IDProduto%>">
+                  <input type="hidden" name="quantidade" value="<%=JCarrinho[i].quantidade%>">
+                  <% } %>
+                    <input type="hidden" name="IDCliente" value="<%=codLogado%>">
+                    <input type="hidden" name="data_pedido" id="dataHoraPedido" value="">
+                    <input type="hidden" name="valor_total" value="<%=total%>">
+                    <%= total%>
+              </span>
+
+            </footer>
+        </div>
+        <button type="submit">Finalizar Compra</button>
+        </form>
+      </aside>
+    </div>
+  </main>
+</body>
+
+<script>
+  function inserirDataHora() {
+    var dataHoraAtual = new Date().toISOString();
+    document.getElementById('dataHoraPedido').value = dataHoraAtual;
+  }
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+<%if(flagAdmin == 'usuario'){%>
+    <button type="submit" class="add-to-cart-button">
+        Adicionar ao Carrinho
+        <i class="fas fa-shopping-cart"></i>
+    </button>
+    <%}else if(flagAdmin=='adm' ){%>
+        <br>
+        <a href="deletar?id_produto=<%=JProdutos[i].IDProduto%>" class="add-to-cart-button">
+            Deletar
+        </a>
+
+        <a href="editar_produto?id_produto=<%=JProdutos[i].IDProduto%>" class="editar">
+            Editar
+        </a>
+    <%}%>

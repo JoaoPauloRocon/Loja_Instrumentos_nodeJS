@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/add_Produto/add_Produto.css">
+    <title>Formulário para inserir Novos Produtos</title>
+</head>
+<body>
+    <%- include("../partes/navbar", { codLogado: codLogado }) %>
+
+
+    <% if(validacao){%>
+        <ul>
+            <%for(var i=0; i<validacao.length; i++){%>
+                <li>
+                    <%= validacao[i].msg;%>
+                </li>
+            <%}%>
+        </ul>
+    <%}%>
+
+    <form action="/produtos/salvar" method="post" enctype="multipart/form-data", >
+
+        <label>Nome do Instrumento</label>
+        <input type="text" id="nomeProduto" name="nomeProduto" <%=produtos.nomeProduto%> placeholder="Nome do Instrumento">
+
+        <br><br>
+
+        <label>Tipo do Instrumento</label>
+        <input type="text" id="tipoInstrumento" name="tipoInstrumento" <%=produtos.tipoInstrumento%> placeholder="Tipo do Instrumento">
+
+        <br><br>
+
+        <label>Marca</label>
+        <input type="text" id="marca" name="marca" <%=produtos.marca%> placeholder="Marca do Instrumento">
+
+        <br><br>
+
+        <label>Preço</label>
+        <input type="text" id="preco" name="preco" <%=produtos.preco%> placeholder="Preço do Instrumento">
+
+        <br><br>
+
+        <label>Quantidade em Estoque</label>
+        <input type="text" id="quantidadeEstoque" name="quantidadeEstoque" <%=produtos.quantidadeEstoque%> placeholder="Quantidade em Estoque">
+
+        <br><br>
+
+        <label>Imagem do Produto</label>
+        <input type="file" class="btn btn-default" id="file" name="file" placeholder="file" accept="image/*">
+
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+
+</body>
+</html>
